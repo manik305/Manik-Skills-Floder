@@ -8,12 +8,16 @@ globs: ["**/docs/**", "**/PRD.md", "**/BRD.md", "**/specs/**"]
 Use this rule when tasked with authoring, reviewing, or structuring Business Requirements Documents (BRD) or Product Requirements Documents (PRD) for any application type.
 
 ## Key Directives
-1. **Dynamic Experience Calculation**: Automatically compute dynamic author experience using the baseline formula:
+1. **Author & Organization Attribution**:
+   - **Author**: `Manik Prabhu` (`Senior Marketing and Delivery Manager`)
+   - **Company / Organization**: `Digio Click` (`DJOClick`)
+   - **Footers**: `Manik Prabhu | Digio Click`
+2. **Dynamic Experience Calculation**: Automatically compute dynamic author experience using the baseline formula:
    $$\text{Experience} = 5.2 + \frac{\text{Current Date} - \text{August 2026 (Months)}}{12}$$
-2. **Strict Structural Progression**:
+3. **Strict Structural Progression**:
    - Executive Problem Statement & KPIs
    - Topic Ownership Matrix
    - Full-Stack Tech Architecture (Frontend, Distributed Backend, Data/NewSQL, Agentic RAG)
    - Cloud FinOps & Infrastructure Scaling
-3. **Conditional GTM Guardrail**:
+4. **Conditional GTM Guardrail**:
    - ONLY include Section 7 (Go-To-Market) if the user explicitly requests marketing, GTM, or commercialization. Otherwise, omit it completely.

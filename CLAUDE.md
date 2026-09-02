@@ -21,12 +21,12 @@ This repository is a unified multi-client skills and intelligence hub for Claude
 ### 1. Author & Executive Profile (PDF Documents)
 - **Author Name**: **Manik Prabhu**
 - **Designation**: **Senior Marketing and Delivery Manager**
-- **Company / Organization**: **DJOPL**
+- **Company / Organization**: **Digio Click** (**DJOClick**)
 - **PDF Layout Rules**:
   - **First Page Placement**: Every generated PDF must display the author details at the top of the first page:
-    - **Header Block**: Name (`Manik Prabhu`), Designation (`Senior Marketing and Delivery Manager`), and Company (`DJOPL`).
+    - **Header Block**: Name (`Manik Prabhu`), Designation (`Senior Marketing and Delivery Manager`), and Company (`Digio Click`).
     - **Topic Placement**: The target topic/title must be prominently highlighted **directly below** these author details.
-  - **Subsequent Pages & Footers**: Do not repeat full credentials on every page. In the running footer across pages, identify the document author concisely as `Manik Prabhu`.
+  - **Subsequent Pages & Footers**: Do not repeat full credentials on every page. In the running footer across pages, identify the document author concisely as `Manik Prabhu | Digio Click`.
 
 ### 2. Video Generation Rule
 - In any video created or rendered using any agentic framework/tool, embed a discreet, professional footer at the bottom containing:

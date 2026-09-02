@@ -29,7 +29,9 @@ Structure the extracted topology into standard STMR JSON:
   "meta": {
     "title": "<Project Name> Architecture",
     "version": "1.0.0",
-    "theme": "dark"
+    "theme": "dark",
+    "author": "Manik Prabhu (Senior Marketing and Delivery Manager)",
+    "company": "Digio Click (DJOClick)"
   },
   "systems": [
     { "id": "sys-frontend", "name": "Frontend Tier", "color": "#38bdf8" },

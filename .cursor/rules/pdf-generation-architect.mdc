@@ -18,12 +18,12 @@ When the user asks to generate, architect, or write a PDF document, report, tech
 - **Author Credentials**:
   - **Name**: `Manik Prabhu`
   - **Designation**: `Senior Marketing and Delivery Manager`
-  - **Company**: `DJOPL`
+  - **Company**: `Digio Click` (`DJOClick`)
 - **Page 1 Hierarchy**:
   - Always place the author credentials block at the **top of the first page**.
   - Highlight the target topic and document title **directly below** the author details.
 - **Footers & Subsequent Pages**:
-  - Do not repeat full credentials on every page. In running page footers, concisely identify the author as `Manik Prabhu | DJOPL`.
+  - Do not repeat full credentials on every page. In running page footers, concisely identify the author as `Manik Prabhu | Digio Click`.
 
 ## 3. Video Generation Rule
 - In any video generated or created using any agentic framework, embed a discreet, permanent footer at the bottom:

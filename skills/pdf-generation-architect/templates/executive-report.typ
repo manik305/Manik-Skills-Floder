@@ -27,7 +27,7 @@
     #grid(
       columns: (1fr, 1fr),
       align: (left, right),
-      text(8.5pt, weight: "medium", fill: muted_gray)[Manik Prabhu | DJOPL],
+      text(8.5pt, weight: "medium", fill: muted_gray)[Manik Prabhu | Digio Click],
       text(8.5pt, weight: "medium", fill: muted_gray)[Page #loc.page() of #counter(page).final(loc).at(0)]
     )
   ])
@@ -56,7 +56,7 @@
       align: (left, right),
       [
         #text(12pt, weight: "bold", fill: primary_accent)[Manik Prabhu] \
-        #text(9pt, weight: "medium", fill: muted_gray)[Senior Marketing and Delivery Manager | *DJOPL*]
+        #text(9pt, weight: "medium", fill: muted_gray)[Senior Marketing and Delivery Manager | *Digio Click*]
       ],
       [
         #rect(

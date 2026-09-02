@@ -126,7 +126,7 @@ On the first page of every generated PDF document, follow this strict top-to-bot
 - **Author Identity Block (At the Top)**:
   - **Author Name**: `Manik Prabhu`
   - **Designation**: `Senior Marketing and Delivery Manager`
-  - **Company**: `DJOPL`
+  - **Company**: `Digio Click` (`DJOClick`)
 - **Topic Highlight Block (Directly Below Author Details)**:
   - The document title and core target topic must be prominently highlighted immediately below the author credentials block.
   - Accompanied by the Executive Metadata Card (Date, Classification, Verification Status).
@@ -137,7 +137,7 @@ On the first page of every generated PDF document, follow this strict top-to-bot
   - Right: Confidentiality status
   - Thin rule divider ($0.5\text{pt}$ in `#E2E8F0`)
 - **Running Footer (All Pages)**:
-  - Left: `Manik Prabhu | DJOPL` (Do not repeat full designation on every page; keep it clean and focused)
+  - Left: `Manik Prabhu | Digio Click` (Do not repeat full designation on every page; keep it clean and focused)
   - Right: Dynamic page numbering: `Page X of Y`
   - Thin rule divider ($0.5\text{pt}$ in `#E2E8F0`)
 
@@ -176,7 +176,7 @@ Typst produces lightweight, editable markup that compiles in $<0.2$ seconds to p
   ]),
   footer: locate(loc => [
     #line(length: 100%, stroke: 0.5pt + rgb("#E2E8F0"))
-    #text(9pt, fill: rgb("#64748B"))[Manik Prabhu | DJOPL]
+    #text(9pt, fill: rgb("#64748B"))[Manik Prabhu | Digio Click]
     #h(1fr)
     #text(9pt, fill: rgb("#64748B"))[Page #loc.page() of #counter(page).final(loc).at(0)]
   ])
@@ -221,7 +221,7 @@ Editable HTML document with strict `@page` CSS print rules.
       color: #64748b;
     }
     @bottom-left {
-      content: "Manik Prabhu | DJOPL";
+      content: "Manik Prabhu | Digio Click";
       font-size: 8pt;
       color: #64748b;
     }
@@ -265,7 +265,7 @@ Editable HTML document with strict `@page` CSS print rules.
 ## 7. Operational Checklist Before Finalizing Delivery
 
 Before presenting the result to the user, ensure:
-- [ ] First page presents **Manik Prabhu** (`Senior Marketing and Delivery Manager | DJOPL`) positioned cleanly above the highlighted topic.
+- [ ] First page presents **Manik Prabhu** (`Senior Marketing and Delivery Manager | Digio Click`) positioned cleanly above the highlighted topic.
 - [ ] Topic thoroughly addressed, including all sub-topics.
 - [ ] Grounded research completed with domain-specific verified metrics (no generic placeholders).
 - [ ] Strict page budget respected with no trailing orphan lines.

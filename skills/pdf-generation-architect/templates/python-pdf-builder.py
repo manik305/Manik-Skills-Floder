@@ -78,7 +78,7 @@ def build_pdf_reportlab(output_filename, title, pages=2):
             self.line(20 * mm, 18 * mm, 190 * mm, 18 * mm)
             self.setFont("Helvetica-Bold", 8)
             self.setFillColor(colors.HexColor("#64748B"))
-            self.drawString(20 * mm, 13 * mm, "Manik Prabhu | DJOPL")
+            self.drawString(20 * mm, 13 * mm, "Manik Prabhu | Digio Click")
             page_text = f"Page {self._pageNumber} of {total_pages}"
             self.setFont("Helvetica", 8)
             self.drawRightString(190 * mm, 13 * mm, page_text)
@@ -162,7 +162,7 @@ def build_pdf_reportlab(output_filename, title, pages=2):
     # 1. Author Details Block (Above Topic)
     author_table_data = [
         [
-            Paragraph("<b>Manik Prabhu</b><br/><font color='#64748B'>Senior Marketing and Delivery Manager | <b>DJOPL</b></font>", author_name_style),
+            Paragraph("<b>Manik Prabhu</b><br/><font color='#64748B'>Senior Marketing and Delivery Manager | <b>Digio Click</b></font>", author_name_style),
             Paragraph("<font color='#2563EB'><b>LEAD EXECUTIVE</b></font>", badge_style)
         ]
     ]

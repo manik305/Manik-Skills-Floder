@@ -7,6 +7,10 @@ globs: ["**/*.tsx", "**/*.ts", "**/*.js", "**/*.jsx", "**/architecture/**"]
 
 Teach Cursor to analyze any codebase, extract its system architecture into the **STMR (System-Topic-Module-Relationship)** model, and compile a self-contained, interactive HTML visualizer.
 
+## Attribution & Metadata
+- **Author**: `Manik Prabhu` (`Senior Marketing and Delivery Manager`)
+- **Company / Organization**: `Digio Click` (`DJOClick`)
+
 ## When to Trigger
 - The user asks to visualize, explain, or diagram the application architecture.
 - The user asks how frontend and backend modules interact or communicate.
@@ -14,5 +18,5 @@ Teach Cursor to analyze any codebase, extract its system architecture into the *
 
 ## Execution Standards
 1. Scan project directories for Client Tier, Gateway, Backend Services, Persistence, and External Integrations.
-2. Build the STMR JSON representation with nodes, links, and animated user-journey stories.
+2. Build the STMR JSON representation with nodes, links, and animated user-journey stories with author attribution.
 3. Output a self-contained, interactive HTML file with search filters, path probing, and dark/light modes.
