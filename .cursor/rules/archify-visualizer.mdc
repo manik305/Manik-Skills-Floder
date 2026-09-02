@@ -1,0 +1,18 @@
+---
+description: Generates interactive, verifiable STMR-based architecture maps, full-stack dependency graphs, and animated module lifecycles as self-contained HTML/SVG visualizers with Sigma/Figma-grade design.
+globs: ["**/*.tsx", "**/*.ts", "**/*.js", "**/*.jsx", "**/architecture/**"]
+---
+
+# Archify & STMR Universal Architecture Visualizer (Cursor Rule)
+
+Teach Cursor to analyze any codebase, extract its system architecture into the **STMR (System-Topic-Module-Relationship)** model, and compile a self-contained, interactive HTML visualizer.
+
+## When to Trigger
+- The user asks to visualize, explain, or diagram the application architecture.
+- The user asks how frontend and backend modules interact or communicate.
+- A new project is created, refactored, or audited for architectural consistency.
+
+## Execution Standards
+1. Scan project directories for Client Tier, Gateway, Backend Services, Persistence, and External Integrations.
+2. Build the STMR JSON representation with nodes, links, and animated user-journey stories.
+3. Output a self-contained, interactive HTML file with search filters, path probing, and dark/light modes.

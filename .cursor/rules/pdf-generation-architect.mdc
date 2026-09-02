@@ -1,0 +1,34 @@
+---
+description: Grounded, publication-grade PDF architect and generator. Enforces multi-domain research, user clarification interviews, strict page budgeting, and editable PDF source generation across Antigravity, Cursor, and Claude Code.
+globs: ["**/*.pdf", "**/*.typ", "**/reports/**", "**/dossiers/**", "**/specs/**"]
+---
+
+# PDF Generation Architect (Cursor Rule)
+
+When the user asks to generate, architect, or write a PDF document, report, technical specification, financial audit, medical brief, or sports analytics dossier:
+
+## 1. Requirement Clarification & Pre-Interview
+- If the topic is underspecified, proactively prompt the user with options for:
+  - **Target Page Budget** (1-page executive summary, 2-5 page whitepaper, 6-20+ page deep dossier, or specific page interval like Page 3 to 7).
+  - **Color Palette** (Slate & Deep Indigo, Emerald & Sage, Modern Crimson, or Venture Gold).
+  - **Document Class** (Technical Architecture, Financial Audit, Healthcare Brief, Sports Analytics, Enterprise Review).
+- If the user provides clear constraints upfront, proceed directly to research and generation.
+
+## 2. Grounded Multi-Domain Research (Zero Hallucination)
+- **Tech / Software**: Verified benchmarks, architecture patterns, latency percentiles ($p99$), API contracts.
+- **Enterprise / Finance**: SEC 10-K data, audited balance sheets, EBITDA, ARR/NRR, CAC payback.
+- **Medical / Healthcare**: Clinical trial phases, endpoints ($p < 0.05$), MoA, peer-reviewed citations.
+- **Science / Engineering**: Governing equations, SI units, experimental error intervals ($\pm \sigma$).
+- **Sports Analytics**: Career averages, strike rates, xG/xA, official governing bodies (ICC, FIFA, NBA).
+
+## 3. Strict Mathematical Page Budgeting
+- Prevent awkward page spillover or orphan single-line paragraphs.
+- One-page budgets: ~350-450 words with metadata card and 5-row table.
+- Multi-page documents: Explicitly insert `#pagebreak()` or `page-break-after: always;` at section thresholds.
+
+## 4. Editable Output Standards
+- Do NOT generate random, unformatted web pages that require manual user fixes.
+- Generate **clean, editable markup source** (`.typ` via Typst, `.html` with CSS Paged Media `@page`, or `.py` via ReportLab).
+- Compile or provide the exact 1-line command to build the `.pdf` immediately:
+  - Typst: `typst compile document.typ output.pdf`
+  - Chrome/Edge Headless: `msedge --headless --disable-gpu --print-to-pdf="output.pdf" --no-pdf-header-footer document.html`
