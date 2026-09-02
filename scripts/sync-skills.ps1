@@ -50,7 +50,7 @@ foreach ($skill in $SkillFolders) {
     $sourceSkillMd = Join-Path $skill.FullName "SKILL.md"
 
     if (-not (Test-Path $sourceSkillMd)) {
-        Write-Warning "Skipping $skillName: No SKILL.md found."
+        Write-Warning "Skipping $($skillName): No SKILL.md found."
         continue
     }
 

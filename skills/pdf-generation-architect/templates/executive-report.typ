@@ -21,13 +21,13 @@
     #v(-2pt)
     #line(length: 100%, stroke: 0.5pt + border_color)
   ]),
-  footer: locate(loc => [
+    footer: locate(loc => [
     #line(length: 100%, stroke: 0.5pt + border_color)
     #v(2pt)
     #grid(
       columns: (1fr, 1fr),
       align: (left, right),
-      text(8.5pt, fill: muted_gray)[Generated via PDF Generation Architect],
+      text(8.5pt, weight: "medium", fill: muted_gray)[Manik Prabhu | DJOPL],
       text(8.5pt, weight: "medium", fill: muted_gray)[Page #loc.page() of #counter(page).final(loc).at(0)]
     )
   ])
@@ -42,45 +42,86 @@
 
 #set par(justify: true, leading: 0.65em)
 
-// Document Header
-#v(0.8cm)
-#text(24pt, weight: "bold", fill: primary_accent)[Target Topic Analysis & Executive Report]
-#v(0.3em)
-#text(12pt, weight: "medium", fill: secondary_accent)[Grounded Multi-Domain Research & Strategic Recommendations]
-#v(0.8em)
-
-// Executive Metadata Card
+// 1. Author Identity Block (Above Topic)
+#v(0.4cm)
 #rect(
   width: 100%,
-  fill: bg_soft,
-  radius: 6pt,
+  fill: rgb("#F1F5F9"),
+  radius: 5pt,
   stroke: 1pt + border_color,
-  inset: 12pt,
+  inset: (x: 14pt, y: 9pt),
   [
     #grid(
-      columns: (1fr, 1fr, 1fr, 1fr),
-      gutter: 10pt,
+      columns: (1fr, auto),
+      align: (left, right),
       [
-        #text(8pt, weight: "bold", fill: muted_gray)[DOCUMENT CLASS]\
-        #text(9.5pt, weight: "semibold", fill: primary_accent)[Strategic Briefing]
+        #text(12pt, weight: "bold", fill: primary_accent)[Manik Prabhu] \
+        #text(9pt, weight: "medium", fill: muted_gray)[Senior Marketing and Delivery Manager | *DJOPL*]
       ],
       [
-        #text(8pt, weight: "bold", fill: muted_gray)[AUTHOR / SYSTEM]\
-        #text(9.5pt, weight: "semibold", fill: primary_accent)[Principal Architect]
-      ],
-      [
-        #text(8pt, weight: "bold", fill: muted_gray)[DATE OF ANALYSIS]\
-        #text(9.5pt, weight: "semibold", fill: primary_accent)[#datetime.today().display("[month repr:long] [year]")]
-      ],
-      [
-        #text(8pt, weight: "bold", fill: muted_gray)[STATUS / INTEGRITY]\
-        #text(9.5pt, weight: "semibold", fill: rgb("#059669"))[Verified Grounded]
+        #rect(
+          fill: rgb("#DBEAFE"),
+          radius: 3pt,
+          inset: (x: 6pt, y: 3pt),
+          text(8pt, weight: "bold", fill: secondary_accent)[LEAD EXECUTIVE]
+        )
       ]
     )
   ]
 )
 
-#v(1em)
+#v(0.6em)
+
+// 2. Prominently Highlighted Topic Block (Below Author Details)
+#rect(
+  width: 100%,
+  fill: rgb("#EFF6FF"),
+  radius: 6pt,
+  stroke: (left: 4pt + secondary_accent, rest: 1pt + rgb("#DBEAFE")),
+  inset: 12pt,
+  [
+    #text(8.5pt, weight: "bold", fill: secondary_accent)[TARGET TOPIC & STRATEGIC FOCUS] \
+    #v(3pt)
+    #text(20pt, weight: "bold", fill: primary_accent)[Target Topic Analysis & Executive Report] \
+    #v(2pt)
+    #text(10.5pt, weight: "medium", fill: neutral_text)[Grounded Multi-Domain Research, Empirical Benchmarks & Strategic Roadmaps]
+  ]
+)
+
+#v(0.8em)
+
+// 3. Executive Metadata Card
+#rect(
+  width: 100%,
+  fill: bg_soft,
+  radius: 6pt,
+  stroke: 1pt + border_color,
+  inset: 10pt,
+  [
+    #grid(
+      columns: (1.2fr, 1fr, 1fr, 1fr),
+      gutter: 10pt,
+      [
+        #text(7.5pt, weight: "bold", fill: muted_gray)[DOCUMENT CLASS]\
+        #text(9pt, weight: "semibold", fill: primary_accent)[Strategic Briefing]
+      ],
+      [
+        #text(7.5pt, weight: "bold", fill: muted_gray)[AUTHOR]\
+        #text(9pt, weight: "semibold", fill: primary_accent)[Manik Prabhu]
+      ],
+      [
+        #text(7.5pt, weight: "bold", fill: muted_gray)[EVALUATION DATE]\
+        #text(9pt, weight: "semibold", fill: primary_accent)[#datetime.today().display("[month repr:long] [year]")]
+      ],
+      [
+        #text(7.5pt, weight: "bold", fill: muted_gray)[AUDIT INTEGRITY]\
+        #text(9pt, weight: "semibold", fill: rgb("#059669"))[Verified Grounded]
+      ]
+    )
+  ]
+)
+
+#v(0.8em)
 
 == 1. Executive Summary & Problem Scope
 

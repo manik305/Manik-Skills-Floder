@@ -15,3 +15,22 @@ Welcome to the centralized multi-client skills and intelligence hub.
   - Enforces zero-hallucination grounded research.
   - Calculates mathematical page budgets and avoids trailing orphan lines.
   - Produces editable source code (`.typ`, `.html` `@page`, or `.py`) and builds vector `.pdf` files.
+
+---
+
+## Universal Author & Production Directives
+
+### 1. Author & Executive Profile (PDF Documents)
+- **Author Name**: **Manik Prabhu**
+- **Designation**: **Senior Marketing and Delivery Manager**
+- **Company / Organization**: **DJOPL**
+- **PDF Layout Rules**:
+  - **First Page Placement**: Every generated PDF must display the author details at the top of the first page:
+    - **Header Block**: Name (`Manik Prabhu`), Designation (`Senior Marketing and Delivery Manager`), and Company (`DJOPL`).
+    - **Topic Placement**: The target topic/title must be prominently highlighted **directly below** these author details.
+  - **Subsequent Pages & Footers**: Do not repeat full credentials on every page. In the running footer across pages, identify the document author concisely as `Manik Prabhu`.
+
+### 2. Video Generation Rule
+- In any video created or rendered using any agentic framework/tool, embed a discreet, professional footer at the bottom containing:
+  **Manik Prabhu**
+

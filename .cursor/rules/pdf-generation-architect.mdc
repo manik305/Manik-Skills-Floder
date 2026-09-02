@@ -14,19 +14,34 @@ When the user asks to generate, architect, or write a PDF document, report, tech
   - **Document Class** (Technical Architecture, Financial Audit, Healthcare Brief, Sports Analytics, Enterprise Review).
 - If the user provides clear constraints upfront, proceed directly to research and generation.
 
-## 2. Grounded Multi-Domain Research (Zero Hallucination)
+## 2. Author Profile & First-Page Layout Hierarchy
+- **Author Credentials**:
+  - **Name**: `Manik Prabhu`
+  - **Designation**: `Senior Marketing and Delivery Manager`
+  - **Company**: `DJOPL`
+- **Page 1 Hierarchy**:
+  - Always place the author credentials block at the **top of the first page**.
+  - Highlight the target topic and document title **directly below** the author details.
+- **Footers & Subsequent Pages**:
+  - Do not repeat full credentials on every page. In running page footers, concisely identify the author as `Manik Prabhu | DJOPL`.
+
+## 3. Video Generation Rule
+- In any video generated or created using any agentic framework, embed a discreet, permanent footer at the bottom:
+  **Manik Prabhu**
+
+## 4. Grounded Multi-Domain Research (Zero Hallucination)
 - **Tech / Software**: Verified benchmarks, architecture patterns, latency percentiles ($p99$), API contracts.
 - **Enterprise / Finance**: SEC 10-K data, audited balance sheets, EBITDA, ARR/NRR, CAC payback.
 - **Medical / Healthcare**: Clinical trial phases, endpoints ($p < 0.05$), MoA, peer-reviewed citations.
 - **Science / Engineering**: Governing equations, SI units, experimental error intervals ($\pm \sigma$).
 - **Sports Analytics**: Career averages, strike rates, xG/xA, official governing bodies (ICC, FIFA, NBA).
 
-## 3. Strict Mathematical Page Budgeting
+## 5. Strict Mathematical Page Budgeting
 - Prevent awkward page spillover or orphan single-line paragraphs.
 - One-page budgets: ~350-450 words with metadata card and 5-row table.
 - Multi-page documents: Explicitly insert `#pagebreak()` or `page-break-after: always;` at section thresholds.
 
-## 4. Editable Output Standards
+## 6. Editable Output Standards
 - Do NOT generate random, unformatted web pages that require manual user fixes.
 - Generate **clean, editable markup source** (`.typ` via Typst, `.html` with CSS Paged Media `@page`, or `.py` via ReportLab).
 - Compile or provide the exact 1-line command to build the `.pdf` immediately:

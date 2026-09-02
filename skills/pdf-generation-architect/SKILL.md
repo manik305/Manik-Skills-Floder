@@ -120,24 +120,45 @@ Font Families    : Inter, Outfit, Liberation Sans, or Roboto (fallback)
 ```
 
 ### Document Anatomy Standard
-1. **Header Zone**:
-   - Left: Document Title & Topic Classification
-   - Right: Confidentiality status or Organization metadata
-   - Thin rule divider ($0.5\text{pt}$ in `#E2E8F0`)
-2. **Executive Metadata Block**:
-   - Clean 4-column summary grid: **Author / Analyst**, **Date**, **Version**, **Classification**.
-3. **Structured Comparative Tables**:
-   - Bold header row with primary accent background and white text.
-   - Alternating row zebra shading (`#F8FAFC` vs `#FFFFFF`).
-   - Right-aligned numerical data, left-aligned descriptions.
-4. **Structured Callout Cards**:
-   - Left border accent ($3\text{pt}$ solid primary/secondary color).
-   - Light background with rounded corners ($4\text{px}$).
-5. **Footer Zone**:
-   - Left: Document ID / Revision tracking
-   - Right: Dynamic page numbering: `Page X of Y`
+
+#### 1. Page 1 Mandatory Author & Topic Hierarchy
+On the first page of every generated PDF document, follow this strict top-to-bottom layout:
+- **Author Identity Block (At the Top)**:
+  - **Author Name**: `Manik Prabhu`
+  - **Designation**: `Senior Marketing and Delivery Manager`
+  - **Company**: `DJOPL`
+- **Topic Highlight Block (Directly Below Author Details)**:
+  - The document title and core target topic must be prominently highlighted immediately below the author credentials block.
+  - Accompanied by the Executive Metadata Card (Date, Classification, Verification Status).
+
+#### 2. Running Header & Footer Zone
+- **Running Header**:
+  - Left: Document Subject / Stream
+  - Right: Confidentiality status
+  - Thin rule divider ($0.5\text{pt}$ in `#E2E8F0`)
+- **Running Footer (All Pages)**:
+  - Left: `Manik Prabhu | DJOPL` (Do not repeat full designation on every page; keep it clean and focused)
+  - Right: Dynamic page numbering: `Page X of Y`
+  - Thin rule divider ($0.5\text{pt}$ in `#E2E8F0`)
+
+#### 3. Structured Comparative Tables
+- Bold header row with primary accent background and white text.
+- Alternating row zebra shading (`#F8FAFC` vs `#FFFFFF`).
+- Right-aligned numerical data, left-aligned descriptions.
+
+#### 4. Structured Callout Cards
+- Left border accent ($3\text{pt}$ solid primary/secondary color).
+- Light background with rounded corners ($4\text{px}$).
 
 ---
+
+### Universal Video Generation Rule
+Whenever an agentic workflow, video pipeline, or presentation framework generates a video:
+- Embed a permanent, discreet footer at the bottom of the video frame:
+  **Manik Prabhu**
+
+---
+
 
 ## 6. Phase 5: Editable Source Formats & Compilation
 

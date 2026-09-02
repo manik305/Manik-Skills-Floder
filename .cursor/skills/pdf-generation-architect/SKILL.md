@@ -120,22 +120,42 @@ Font Families    : Inter, Outfit, Liberation Sans, or Roboto (fallback)
 ```
 
 ### Document Anatomy Standard
-1. **Header Zone**:
-   - Left: Document Title & Topic Classification
-   - Right: Confidentiality status or Organization metadata
-   - Thin rule divider ($0.5\text{pt}$ in `#E2E8F0`)
-2. **Executive Metadata Block**:
-   - Clean 4-column summary grid: **Author / Analyst**, **Date**, **Version**, **Classification**.
-3. **Structured Comparative Tables**:
-   - Bold header row with primary accent background and white text.
-   - Alternating row zebra shading (`#F8FAFC` vs `#FFFFFF`).
-   - Right-aligned numerical data, left-aligned descriptions.
-4. **Structured Callout Cards**:
-   - Left border accent ($3\text{pt}$ solid primary/secondary color).
-   - Light background with rounded corners ($4\text{px}$).
-5. **Footer Zone**:
-   - Left: Document ID / Revision tracking
-   - Right: Dynamic page numbering: `Page X of Y`
+
+#### 1. Page 1 Mandatory Author & Topic Hierarchy
+On the first page of every generated PDF document, follow this strict top-to-bottom layout:
+- **Author Identity Block (At the Top)**:
+  - **Author Name**: `Manik Prabhu`
+  - **Designation**: `Senior Marketing and Delivery Manager`
+  - **Company**: `DJOPL`
+- **Topic Highlight Block (Directly Below Author Details)**:
+  - The document title and core target topic must be prominently highlighted immediately below the author credentials block.
+  - Accompanied by the Executive Metadata Card (Date, Classification, Verification Status).
+
+#### 2. Running Header & Footer Zone
+- **Running Header**:
+  - Left: Document Subject / Stream
+  - Right: Confidentiality status
+  - Thin rule divider ($0.5\text{pt}$ in `#E2E8F0`)
+- **Running Footer (All Pages)**:
+  - Left: `Manik Prabhu | DJOPL` (Do not repeat full designation on every page; keep it clean and focused)
+  - Right: Dynamic page numbering: `Page X of Y`
+  - Thin rule divider ($0.5\text{pt}$ in `#E2E8F0`)
+
+#### 3. Structured Comparative Tables
+- Bold header row with primary accent background and white text.
+- Alternating row zebra shading (`#F8FAFC` vs `#FFFFFF`).
+- Right-aligned numerical data, left-aligned descriptions.
+
+#### 4. Structured Callout Cards
+- Left border accent ($3\text{pt}$ solid primary/secondary color).
+- Light background with rounded corners ($4\text{px}$).
+
+---
+
+### Universal Video Generation Rule
+Whenever an agentic workflow, video pipeline, or presentation framework generates a video:
+- Embed a permanent, discreet footer at the bottom of the video frame:
+  **Manik Prabhu**
 
 ---
 
@@ -156,7 +176,7 @@ Typst produces lightweight, editable markup that compiles in $<0.2$ seconds to p
   ]),
   footer: locate(loc => [
     #line(length: 100%, stroke: 0.5pt + rgb("#E2E8F0"))
-    #text(9pt, fill: rgb("#64748B"))[Archived Record]
+    #text(9pt, fill: rgb("#64748B"))[Manik Prabhu | DJOPL]
     #h(1fr)
     #text(9pt, fill: rgb("#64748B"))[Page #loc.page() of #counter(page).final(loc).at(0)]
   ])
@@ -201,9 +221,9 @@ Editable HTML document with strict `@page` CSS print rules.
       color: #64748b;
     }
     @bottom-left {
-      content: "Generated via PDF Architect";
+      content: "Manik Prabhu | DJOPL";
       font-size: 8pt;
-      color: #94a3b8;
+      color: #64748b;
     }
     @bottom-right {
       content: "Page " counter(page) " of " counter(pages);
@@ -245,8 +265,9 @@ Editable HTML document with strict `@page` CSS print rules.
 ## 7. Operational Checklist Before Finalizing Delivery
 
 Before presenting the result to the user, ensure:
-- [ ] Grounded research completed with domain-specific verified metrics (no generic placeholders).
+- [ ] First page presents **Manik Prabhu** (`Senior Marketing and Delivery Manager | DJOPL`) positioned cleanly above the highlighted topic.
 - [ ] Topic thoroughly addressed, including all sub-topics.
+- [ ] Grounded research completed with domain-specific verified metrics (no generic placeholders).
 - [ ] Strict page budget respected with no trailing orphan lines.
 - [ ] Visual design uses curated executive palette, clear table zebra-striping, and clean dividers.
 - [ ] Both the **editable source code** (`.typ` or `.html` or `.py`) and the compiled **`.pdf`** path are provided so the user can easily review, modify, or regenerate anytime.
