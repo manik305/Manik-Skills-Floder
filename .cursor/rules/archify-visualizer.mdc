@@ -1,22 +1,27 @@
 ---
-description: Generates interactive, verifiable STMR-based architecture maps, full-stack dependency graphs, and animated module lifecycles as self-contained HTML/SVG visualizers with Sigma/Figma-grade design.
-globs: ["**/*.tsx", "**/*.ts", "**/*.js", "**/*.jsx", "**/architecture/**"]
+description: Generates interactive, verifiable STMR-based architecture maps, full-stack dependency graphs, and animated module lifecycles as self-contained HTML/SVG visualizers with Sigma/Figma-grade design, official cloud icons (AWS, Azure, GCP, K8s, Docker), PRD/BRD ingestion, and concrete API endpoint specifications.
+globs: ["**/*.tsx", "**/*.ts", "**/*.js", "**/*.jsx", "**/architecture/**", "**/docs/**", "**/PRD.md", "**/BRD.md"]
 ---
 
 # Archify & STMR Universal Architecture Visualizer (Cursor Rule)
 
-Teach Cursor to analyze any codebase, extract its system architecture into the **STMR (System-Topic-Module-Relationship)** model, and compile a self-contained, interactive HTML visualizer.
+Teach Cursor to analyze any codebase or ingest PRD/BRD documents, extract its system architecture into the **STMR (System-Topic-Module-Relationship)** model, and compile a self-contained, interactive HTML visualizer with Figma-grade design.
 
-## Attribution & Metadata
+## 1. Attribution & Metadata
 - **Author**: `Manik Prabhu` (`Senior Marketing and Delivery Manager`)
 - **Company / Organization**: `Digio Click` (`DJOClick`)
+- **Visualizer Header/Footer**: Displays `Manik Prabhu | Senior Marketing and Delivery Manager | Digio Click`
 
-## When to Trigger
-- The user asks to visualize, explain, or diagram the application architecture.
-- The user asks how frontend and backend modules interact or communicate.
-- A new project is created, refactored, or audited for architectural consistency.
+## 2. Dual-Mode Triggering & Ingestion
+- **PRD / BRD Ingestion**: Ingests requirements specifications to generate cloud, frontend, backend, data, and queue architecture.
+- **Codebase Scanning**: Inspects directories, configs (Docker, K8s, Terraform), and controllers to extract live system maps.
 
-## Execution Standards
-1. Scan project directories for Client Tier, Gateway, Backend Services, Persistence, and External Integrations.
-2. Build the STMR JSON representation with nodes, links, and animated user-journey stories with author attribution.
-3. Output a self-contained, interactive HTML file with search filters, path probing, and dark/light modes.
+## 3. Explicit Cloud Infrastructure & Managed Services
+- Every generated architecture must explicitly declare the Cloud Provider (**AWS**, **Azure**, **GCP**, or **Kubernetes/Hybrid**).
+- Catalogues specific cloud services (e.g. AWS S3, ECS, ECR, EKS, DynamoDB; Azure Cosmos DB, Functions, AKS; GCP Cloud Run, GKE, Spanner).
+- Renders official vector SVG cloud and technology icons in Figma-styled cards.
+
+## 4. Concrete Module Technical Specs & Endpoints
+- Exact runtime and frameworks (e.g. Node.js 22 + TypeScript 5.8, Python 3.12 + FastAPI, React 19).
+- Exact exposed REST/gRPC endpoints with HTTP method pills (`GET`, `POST`, `PUT`, `DELETE`).
+- Slide-over inspection drawer for deep dive module contracts.

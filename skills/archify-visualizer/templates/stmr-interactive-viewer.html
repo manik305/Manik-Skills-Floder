@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archify STMR Universal Architecture Visualizer</title>
+<style>
+  :root {
+    --bg-base: #0b0f17;
+    --bg-surface: #131b2a;
+    --bg-card: rgba(19, 27, 42, 0.85);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(56, 189, 248, 0.4);
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent-blue: #38bdf8;
+    --accent-indigo: #818cf8;
+    --accent-emerald: #34d399;
+    --accent-amber: #f59e0b;
+    --accent-rose: #f43f5e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Top Navigation & Executive Badge */
+  header {
+    height: 60px;
+    background: rgba(11, 15, 23, 0.95);
+    border-bottom: 1px solid var(--border-subtle);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 100;
+  }
+
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .logo-pill {
+    background: linear-gradient(135deg, #0284c7, #6366f1);
+    color: #fff;
+    font-weight: 800;
+    font-size: 11pt;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+  }
+  .doc-title { font-size: 11pt; font-weight: 700; color: #fff; }
+  .cloud-pill {
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    color: #fbbf24;
+    font-size: 8pt;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .author-badge {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 6px 12px;
+    text-align: right;
+  }
+  .author-badge .name { font-size: 9pt; font-weight: 700; color: var(--text-main); }
+  .author-badge .role { font-size: 7.5pt; color: var(--accent-blue); }
+
+  /* Worksurface & Dot Grid */
+  .canvas-container {
+    flex: 1;
+    position: relative;
+    background-color: #080c14;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 24px 24px;
+    overflow: hidden;
+    cursor: grab;
+  }
+  .canvas-container:active { cursor: grabbing; }
+
+  /* SVG Links Layer */
+  svg#connections-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .wire {
+    fill: none;
+    stroke: rgba(148, 163, 184, 0.25);
+    stroke-width: 2px;
+    transition: stroke 0.2s;
+  }
+  .wire.active {
+    stroke: var(--accent-blue);
+    stroke-width: 2.5px;
+  }
+
+  /* Nodes Container */
+  .nodes-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    z-index: 20;
+  }
+
+  /* Figma-Style Node Card */
+  .arch-card {
+    position: absolute;
+    width: 240px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 14px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: transform 0.15s, border-color 0.2s, box-shadow 0.2s;
+    user-select: none;
+  }
+  .arch-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 14px 30px -5px rgba(56, 189, 248, 0.25);
+  }
+  .arch-card.selected {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px var(--accent-blue), 0 14px 30px -5px rgba(56, 189, 248, 0.4);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .card-icon-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tech-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-name {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #fff;
+  }
+  .card-tier {
+    font-size: 7.5pt;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .card-cloud {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin: 8px 0;
+    font-size: 8pt;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .card-desc {
+    font-size: 8pt;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* Slide-Over Inspector Drawer */
+  .inspector {
+    position: absolute;
+    top: 0;
+    right: -420px;
+    width: 400px;
+    height: 100%;
+    background: #0f1623;
+    border-left: 1px solid var(--border-subtle);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+    z-index: 50;
+    transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .inspector.open { right: 0; }
+
+  .inspector-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+  }
+  .close-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 16pt;
+    cursor: pointer;
+  }
+  .close-btn:hover { color: #fff; }
+
+  .meta-prop { margin-bottom: 14px; }
+  .prop-label { font-size: 7.5pt; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 4px; }
+  .prop-value { font-size: 9.5pt; font-weight: 600; color: #fff; }
+
+  .endpoint-list {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .endpoint-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 8.5pt;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .method-badge {
+    font-weight: 800;
+    font-size: 7.5pt;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .method-post { background: rgba(56, 189, 248, 0.2); color: #38bdf8; }
+  .method-get { background: rgba(52, 211, 153, 0.2); color: #34d399; }
+</style>
+</head>
+<body>
+
+  <!-- Top Navigation & Attribution -->
+  <header>
+    <div class="header-left">
+      <span class="logo-pill">STMR</span>
+      <span class="doc-title">Enterprise Cloud Architecture Map</span>
+      <div class="cloud-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+        AWS Multi-Region
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="author-badge">
+        <div class="name">Manik Prabhu</div>
+        <div class="role">Senior Marketing and Delivery Manager | Digio Click (DJOClick)</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Worksurface -->
+  <div class="canvas-container" id="canvas">
+    <svg id="connections-layer"></svg>
+    <div class="nodes-layer" id="nodesLayer"></div>
+  </div>
+
+  <!-- Slide-Over Inspector Drawer -->
+  <div class="inspector" id="inspector">
+    <div class="inspector-header">
+      <h3 id="inspName" style="font-size: 13pt; font-weight: 700; color: #fff;">Module Inspector</h3>
+      <button class="close-btn" onclick="closeInspector()">&times;</button>
+    </div>
+    <div class="meta-prop">
+      <div class="prop-label">Cloud Infrastructure & Service</div>
+      <div class="prop-value" id="inspCloud">-</div>
+    </div>
+    <div class="meta-prop">
+      <div class="prop-label">Runtime & Tech Stack</div>
+      <div class="prop-value" id="inspTech">-</div>
+    </div>
+    <div class="meta-prop">
+      <div class="prop-label">Description & Role</div>
+      <p id="inspDesc" style="font-size: 8.5pt; color: var(--text-muted); line-height: 1.4;">-</p>
+    </div>
+    <div class="meta-prop">
+      <div class="prop-label">Exposed API Endpoints & Contracts</div>
+      <div class="endpoint-list" id="inspEndpoints"></div>
+    </div>
+  </div>
+
+  <script>
+    // Topology definition with explicit Cloud Provider & Services
+    const topology = {
+      systems: [
+        { id: "sys-client", name: "Client Edge", color: "#38bdf8" },
+        { id: "sys-ingress", name: "Cloud Ingress", color: "#f59e0b" },
+        { id: "sys-backend", name: "Application Tier", color: "#818cf8" },
+        { id: "sys-data", name: "Persistence Tier", color: "#34d399" }
+      ],
+      modules: [
+        {
+          id: "mod-web",
+          name: "Next.js Web SPA",
+          tier: "Client Edge",
+          color: "#38bdf8",
+          cloud: "Amazon CloudFront + S3",
+          tech: "Next.js 15 / React 19 / TypeScript",
+          x: 60, y: 180,
+          desc: "High-performance edge-cached web frontend with optimistic mutations.",
+          endpoints: [
+            { method: "GET", path: "/dashboard", desc: "Server Component SSR" }
+          ]
+        },
+        {
+          id: "mod-gateway",
+          name: "API Gateway",
+          tier: "Cloud Ingress",
+          color: "#f59e0b",
+          cloud: "AWS API Gateway + Envoy",
+          tech: "Envoy Gateway / mTLS",
+          x: 360, y: 180,
+          desc: "Central traffic ingress managing rate limits, JWT auth, and routing.",
+          endpoints: [
+            { method: "ALL", path: "/api/v1/*", desc: "Reverse proxy route" }
+          ]
+        },
+        {
+          id: "mod-api",
+          name: "Transaction Engine",
+          tier: "Application Tier",
+          color: "#818cf8",
+          cloud: "AWS ECS Fargate",
+          tech: "Node.js 22 + TypeScript 5.8",
+          x: 680, y: 100,
+          desc: "Core transactional microservice executing financial business rules.",
+          endpoints: [
+            { method: "POST", path: "/api/v1/checkout", desc: "Idempotent payment" },
+            { method: "GET", path: "/api/v1/orders/:id", desc: "Fetch order details" }
+          ]
+        },
+        {
+          id: "mod-worker",
+          name: "Event Processor",
+          tier: "Application Tier",
+          color: "#818cf8",
+          cloud: "AWS ECS + SQS FIFO",
+          tech: "Python 3.12 / Celery",
+          x: 680, y: 300,
+          desc: "Asynchronous background worker polling FIFO queues for delivery processing.",
+          endpoints: [
+            { method: "POST", path: "/tasks/reconcile", desc: "Batch ledger sync" }
+          ]
+        },
+        {
+          id: "mod-db",
+          name: "Aurora PostgreSQL",
+          tier: "Persistence Tier",
+          color: "#34d399",
+          cloud: "Amazon Aurora Serverless v2",
+          tech: "PostgreSQL 16 Multi-AZ",
+          x: 980, y: 180,
+          desc: "Primary relational storage with multi-region active-active read replicas.",
+          endpoints: [
+            { method: "SQL", path: "Port 5432 (TCP)", desc: "ACID transactions" }
+          ]
+        }
+      ],
+      links: [
+        { from: "mod-web", to: "mod-gateway" },
+        { from: "mod-gateway", to: "mod-api" },
+        { from: "mod-api", to: "mod-worker" },
+        { from: "mod-api", to: "mod-db" }
+      ]
+    };
+
+    const nodesLayer = document.getElementById("nodesLayer");
+    const svgLayer = document.getElementById("connections-layer");
+    let selectedModuleId = null;
+
+    // Render Nodes
+    topology.modules.forEach(m => {
+      const card = document.createElement("div");
+      card.className = "arch-card";
+      card.id = m.id;
+      card.style.left = m.x + "px";
+      card.style.top = m.y + "px";
+
+      card.innerHTML = `
+        <div class="card-header">
+          <div class="card-icon-title">
+            <span class="card-name">${m.name}</span>
+          </div>
+          <span class="card-tier" style="background: ${m.color}22; color: ${m.color}">${m.tier}</span>
+        </div>
+        <div class="card-cloud">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+          ${m.cloud}
+        </div>
+        <div class="card-desc">${m.desc}</div>
+      `;
+
+      card.addEventListener("click", () => inspectModule(m));
+      nodesLayer.appendChild(card);
+    });
+
+    // Render Curves
+    function drawWires() {
+      svgLayer.innerHTML = "";
+      topology.links.forEach(link => {
+        const fromMod = topology.modules.find(m => m.id === link.from);
+        const toMod = topology.modules.find(m => m.id === link.to);
+        if (!fromMod || !toMod) return;
+
+        const x1 = fromMod.x + 240;
+        const y1 = fromMod.y + 65;
+        const x2 = toMod.x;
+        const y2 = toMod.y + 65;
+        const dx = (x2 - x1) / 2;
+
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        const d = `M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`;
+        path.setAttribute("d", d);
+        path.setAttribute("class", "wire");
+        svgLayer.appendChild(path);
+      });
+    }
+
+    drawWires();
+
+    // Inspection Drawer
+    function inspectModule(m) {
+      document.querySelectorAll(".arch-card").forEach(c => c.classList.remove("selected"));
+      document.getElementById(m.id).classList.add("selected");
+
+      document.getElementById("inspName").innerText = m.name;
+      document.getElementById("inspCloud").innerText = m.cloud;
+      document.getElementById("inspTech").innerText = m.tech;
+      document.getElementById("inspDesc").innerText = m.desc;
+
+      const epContainer = document.getElementById("inspEndpoints");
+      epContainer.innerHTML = "";
+      m.endpoints.forEach(ep => {
+        const item = document.createElement("div");
+        item.className = "endpoint-item";
+        item.innerHTML = `
+          <span class="method-badge ${ep.method === 'POST' ? 'method-post' : 'method-get'}">${ep.method}</span>
+          <span>${ep.path}</span>
+        `;
+        epContainer.appendChild(item);
+      });
+
+      document.getElementById("inspector").classList.add("open");
+    }
+
+    function closeInspector() {
+      document.getElementById("inspector").classList.remove("open");
+      document.querySelectorAll(".arch-card").forEach(c => c.classList.remove("selected"));
+    }
+  </script>
+</body>
+</html>
