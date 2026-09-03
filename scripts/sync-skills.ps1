@@ -76,25 +76,27 @@ foreach ($skill in $SkillFolders) {
 
     # 4. Cursor Rules (.cursor/rules/<skill>.mdc)
     $cursorRuleFile = Join-Path $CursorRulesDir "$skillName.mdc"
-    if (-not (Test-Path $cursorRuleFile)) {
-        $ruleHeader = @"
+    $ruleHeader = @"
 ---
 description: Autonomous skill integration for $skillName.
 globs: ["*"]
 ---
 
 "@
-        $content = Get-Content $sourceSkillMd -Raw
-        Set-Content -Path $cursorRuleFile -Value ($ruleHeader + $content)
-        Write-Host "  -> Generated Cursor Rule (.cursor/rules/$skillName.mdc)" -ForegroundColor Gray
-    }
+    $content = Get-Content $sourceSkillMd -Raw
+    Set-Content -Path $cursorRuleFile -Value ($ruleHeader + $content)
+    Write-Host "  -> Synced Cursor Rule (.cursor/rules/$skillName.mdc)" -ForegroundColor Gray
 
     # 5. Global Antigravity Config (~/.gemini/config/skills/)
     if ($InstallGlobal -or (Test-Path (Join-Path $GlobalGeminiDir $skillName))) {
-        $globalTarget = Join-Path $GlobalGeminiDir $skillName
-        if (-not (Test-Path $globalTarget)) { New-Item -ItemType Directory -Force -Path $globalTarget | Out-Null }
-        Copy-Item -Path $sourceSkillMd -Destination (Join-Path $globalTarget "SKILL.md") -Force
-        Write-Host "  -> Synced to Global Antigravity Config (~/.gemini/config/skills/$skillName)" -ForegroundColor Yellow
+        try {
+            $globalTarget = Join-Path $GlobalGeminiDir $skillName
+            if (-not (Test-Path $globalTarget)) { New-Item -ItemType Directory -Force -Path $globalTarget -ErrorAction Stop | Out-Null }
+            Copy-Item -Path $sourceSkillMd -Destination (Join-Path $globalTarget "SKILL.md") -Force -ErrorAction Stop
+            Write-Host "  -> Synced to Global Antigravity Config (~/.gemini/config/skills/$skillName)" -ForegroundColor Yellow
+        } catch {
+            Write-Warning "Global install skipped/restricted for $($skillName): $($_.Exception.Message)"
+        }
     }
 }
 

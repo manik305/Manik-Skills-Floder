@@ -30,8 +30,8 @@ When generating any BRD or PRD document, dynamically compute and display the Aut
 ---
 **Document**: [Product / Business Requirements Document]
 **Project Title**: [Project Name]
-**Author / Solutions Lead**: Manik Prabhu (Senior Marketing and Delivery Manager)
-**Company / Organization**: Digio Click (DJOClick)
+**Author / Solutions Lead**: [Author Name / Solutions Architect (Runtime Configured)]
+**Company / Organization**: [Organization / Enterprise Name]
 **Experience Level**: [Dynamically Computed, e.g., 5.7 Years (Specialized in Enterprise B2B Sales & Tech Architectures)]
 **Generation Date**: [Dynamic System Date, e.g., February 2027]
 **Document Status**: Draft | Review | Approved
@@ -154,11 +154,11 @@ When GTM is requested, include:
 - **Typography & Structure**: Clear hierarchical markdown with numbered subsections, comparison tables, and Mermaid architecture diagrams.
 
 ### Header & Footer Standard (Multi-Page Rendering)
-- **Title Section (Page 1)**: Prominent `# [Project Title]` at the very top with author details (Manik Prabhu | Senior Marketing and Delivery Manager | Digio Click), dynamic author experience, and project problem summary.
+- **Title Section (Page 1)**: Prominent `# [Project Title]` at the very top with author details (if provided at runtime: Author | Title | Organization), dynamic author experience, and project problem summary.
 - **Running Page Footer**:
   ```markdown
   ---
-  *Project: [Project Name] | Manik Prabhu | Digio Click | Page [X] of [Y] | Dynamic Exp: [Computed Experience]*
+  *Project: [Project Name] | [Author Name / Organization (Runtime)] | Page [X] of [Y] | Dynamic Exp: [Computed Experience]*
   ---
   ```
 

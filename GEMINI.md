@@ -9,28 +9,24 @@ Welcome to the centralized multi-client skills and intelligence hub.
 - **Master GitHub Hub**: Canonical skills with production templates and references in `skills/<skill-name>/`.
 
 ## Active Skills in this Repository
-- **`pdf-generation-architect`**: Grounded, publication-grade PDF architect and generator.
-  - Automatically assesses the topic (technology, products, corporate, financial, medical, science, sports).
-  - Clarifies ambiguity with targeted pre-interview questions.
-  - Enforces zero-hallucination grounded research.
-  - Calculates mathematical page budgets and avoids trailing orphan lines.
-  - Produces editable source code (`.typ`, `.html` `@page`, or `.py`) and builds vector `.pdf` files.
+- **`engineering`**: Comprehensive software engineering, TDD, domain modeling (`CONTEXT.md` / ADRs), deep codebase design, hypothesis-driven bug diagnosis, tracer-bullet specs, and architectural modernization.
+- **`productivity`**: Relentless alignment, Socratic grilling (`grill-me`), structured context handoff (`handoff`), ambiguous-to-questionnaire synthesis, and developer velocity protocols.
+- **`in-progress`**: Experimental agentic workflows, autonomous execution loops (`loop-me`), spec autopilot (`implement-spec`), post-mortem retrospectives (`retro`), and TypeScript deep module boundaries.
+- **`deprecated`**: Deprecation lifecycle governance, anti-pattern identification, safe migration paths, and legacy decommissioning protocols.
+- **`pdf-generation-architect`**: Publication-grade PDF architect with runtime-configurable authoring, mathematical page budgets, grounded research, and vector compilation.
+- **`prd-brd-architect`**: Enterprise-grade PRD & BRD generator with dynamic B2B experience calculation, 360° stack architecture, and distributed systems mapping.
+- **`archify-visualizer`**: Verifiable STMR-based architecture maps, full-stack dependency graphs, and interactive animated module visualizers.
 
 ---
 
-## Universal Author & Production Directives
+## Document Generation Author & Identity Directives
 
-### 1. Author & Executive Profile (PDF Documents)
-- **Author Name**: **Manik Prabhu**
-- **Designation**: **Senior Marketing and Delivery Manager**
-- **Company / Organization**: **Digio Click** (**DJOClick**)
-- **PDF Layout Rules**:
-  - **First Page Placement**: Every generated PDF must display the author details at the top of the first page:
-    - **Header Block**: Name (`Manik Prabhu`), Designation (`Senior Marketing and Delivery Manager`), and Company (`Digio Click`).
-    - **Topic Placement**: The target topic/title must be prominently highlighted **directly below** these author details.
-  - **Subsequent Pages & Footers**: Do not repeat full credentials on every page. In the running footer across pages, identify the document author concisely as `Manik Prabhu | Digio Click`.
-
-### 2. Video Generation Rule
-- In any video created or rendered using any agentic framework/tool, embed a discreet, professional footer at the bottom containing:
-  **Manik Prabhu**
+### 1. Runtime Configurable Author Identity (Document & PDF Generation)
+- **Runtime Prompt Input**: Document and PDF generation tools allow the user to specify custom author details at prompt time:
+  - `Author: [Name]`
+  - `Designation: [Role/Title]`
+  - `Company / Organization: [Company]`
+- **Layout Behavior**:
+  - **When provided**: Display the author block at the top of the first page with the main topic prominently highlighted directly beneath it; render `[Author] | [Company]` in the running footer.
+  - **When omitted**: Format cleanly with standard executive title blocks and document classification without requiring or hardcoding personal identity.
 

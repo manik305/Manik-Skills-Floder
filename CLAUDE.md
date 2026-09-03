@@ -7,28 +7,29 @@ This repository is a unified multi-client skills and intelligence hub for Claude
 - Canonical master skill definitions and editable templates are located in `skills/<skill-name>/`.
 
 ## Active Skills
-- `pdf-generation-architect`: Grounded, publication-grade PDF architect and generator. Evaluates topics, asks targeted clarification questions when underspecified, conducts grounded multi-domain research (tech, finance, healthcare, science, sports, enterprise), enforces strict mathematical page budgeting, and outputs editable `.typ`, `.html`, or `.py` source along with compiled `.pdf` documents.
+- `engineering`: Comprehensive software engineering, TDD, domain modeling (`CONTEXT.md` / ADRs), deep codebase design, hypothesis-driven bug diagnosis, tracer-bullet specs, and architectural modernization.
+- `productivity`: Relentless alignment, Socratic grilling (`grill-me`), structured context handoff (`handoff`), ambiguous-to-questionnaire synthesis, and developer velocity protocols.
+- `in-progress`: Experimental agentic workflows, autonomous execution loops (`loop-me`), spec autopilot (`implement-spec`), post-mortem retrospectives (`retro`), and TypeScript deep module boundaries.
+- `deprecated`: Deprecation lifecycle governance, anti-pattern identification, safe migration paths, and legacy decommissioning protocols.
+- `pdf-generation-architect`: Grounded, publication-grade PDF architect and generator with runtime-configurable authoring, mathematical page budgets, and vector compilation.
+- `prd-brd-architect`: Enterprise-grade PRD & BRD generator with dynamic B2B experience calculation, 360° stack architecture, and distributed systems mapping.
+- `archify-visualizer`: Verifiable STMR-based architecture maps, full-stack dependency graphs, and interactive animated module visualizers.
 
 ## Guidelines for Claude Code
-1. When generating PDF documents or reports, load and follow `.claude/skills/pdf-generation-architect/SKILL.md`.
-2. Always generate editable document sources (`.typ`, `.html` with `@page`, or `.py`) so the user can easily adjust and regenerate the document anytime.
+1. Load and follow the appropriate skill specification from `.claude/skills/<skill-name>/SKILL.md`.
+2. When generating PDF documents or reports, generate editable document sources (`.typ`, `.html` with `@page`, or `.py`) so the user can easily adjust and regenerate the document anytime.
 3. Adhere to executive color palettes, structured comparison tables, and zero-orphan pagination.
 
 ---
 
-## Universal Author & Production Directives
+## Document Generation Author & Identity Directives
 
-### 1. Author & Executive Profile (PDF Documents)
-- **Author Name**: **Manik Prabhu**
-- **Designation**: **Senior Marketing and Delivery Manager**
-- **Company / Organization**: **Digio Click** (**DJOClick**)
-- **PDF Layout Rules**:
-  - **First Page Placement**: Every generated PDF must display the author details at the top of the first page:
-    - **Header Block**: Name (`Manik Prabhu`), Designation (`Senior Marketing and Delivery Manager`), and Company (`Digio Click`).
-    - **Topic Placement**: The target topic/title must be prominently highlighted **directly below** these author details.
-  - **Subsequent Pages & Footers**: Do not repeat full credentials on every page. In the running footer across pages, identify the document author concisely as `Manik Prabhu | Digio Click`.
-
-### 2. Video Generation Rule
-- In any video created or rendered using any agentic framework/tool, embed a discreet, professional footer at the bottom containing:
-  **Manik Prabhu**
+### 1. Runtime Configurable Author Identity (Document & PDF Generation)
+- **Runtime Prompt Input**: Document and PDF generation tools allow the user to specify custom author details at prompt time:
+  - `Author: [Name]`
+  - `Designation: [Role/Title]`
+  - `Company / Organization: [Company]`
+- **Layout Behavior**:
+  - **When provided**: Display the author block at the top of the first page with the main topic prominently highlighted directly beneath it; render `[Author] | [Company]` in the running footer.
+  - **When omitted**: Format cleanly with standard executive title blocks and document classification without requiring or hardcoding personal identity.
 

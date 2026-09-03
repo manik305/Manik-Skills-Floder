@@ -13,13 +13,11 @@ This skill supports dual-mode synthesis:
 
 ---
 
-## 1. Universal Author & Organization Attribution
+## 1. Runtime Author & Architecture Attribution
 
-Every generated architectural visualizer and exported specification must prominently feature:
-- **Author**: **Manik Prabhu**
-- **Designation**: **Senior Marketing and Delivery Manager**
-- **Company / Organization**: **Digio Click** (**DJOClick**)
-- **Visualizer Header/Footer**: Displays the branded executive badge: `Manik Prabhu | Senior Marketing and Delivery Manager | Digio Click`
+Generated architectural visualizers and exported specifications support optional runtime author attribution:
+- **Author Identity (Optional at Runtime)**: Author Name, Designation, and Organization can be passed in prompt parameters.
+- **Visualizer Header/Footer**: Displays the runtime author badge or system architecture classification when generated.
 
 ---
 
@@ -102,8 +100,8 @@ Structure the extracted topology into standard STMR JSON:
     "version": "1.2.0",
     "cloudProvider": "AWS / Multi-Cloud",
     "theme": "dark",
-    "author": "Manik Prabhu (Senior Marketing and Delivery Manager)",
-    "company": "Digio Click (DJOClick)",
+    "author": "[Author Name (Runtime Configured)]",
+    "company": "[Organization Name (Runtime Configured)]",
     "generatedFrom": "PRD / Codebase Ingestion"
   },
   "cloudInfrastructure": {
@@ -223,8 +221,8 @@ Every generated HTML viewer must be **completely self-contained** (runs offline 
      - Full list of exposed REST/gRPC endpoints with method badges (`GET`, `POST`, `PUT`, `DELETE`).
 4. **Animated Story Player**:
    - Simulates live packet flow across the nodes with pulsing gradient beads tracing the links.
-5. **Branded Header & Footer**:
-   - `Manik Prabhu` | `Senior Marketing and Delivery Manager` | `Digio Click` (`DJOClick`).
+5. **Header & Footer Attribution**:
+   - `[Author Name] | [Designation] | [Company]` (if provided at runtime).
    - Export to PNG / SVG capability.
 
 ---
@@ -237,5 +235,5 @@ When generating or updating an architecture map:
 - [ ] Detailed the exact cloud managed services used (e.g. S3, ECS, ECR, EKS, Cosmos DB, Cloud Run).
 - [ ] Included concrete runtimes, protocols, and exact API endpoints for every module.
 - [ ] Formatted with Figma-grade SVG/Canvas design and official vector tech icons.
-- [ ] Embedded **Manik Prabhu** | **Senior Marketing and Delivery Manager** | **Digio Click** (`DJOClick`) attribution.
+- [ ] Embedded dynamic project and author attribution (if provided at runtime).
 - [ ] Output a direct file path and clickable link to the generated `.html` visualizer.

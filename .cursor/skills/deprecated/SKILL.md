@@ -1,0 +1,69 @@
+---
+name: deprecated
+description: Deprecation lifecycle management, anti-pattern catalog, legacy code decommissioning, and safe migration protocols for AI agent workflows. Governs phase-out of obsolete skills, patterns, and brittle prompt practices. Compatible with Antigravity, Claude Code, and Cursor.
+---
+
+# Deprecation Lifecycle, Anti-Pattern Migration & Decommissioning Engine
+
+---
+
+## 1. Overview & Purpose
+
+As agentic tools evolve rapidly, older prompt strategies, unconstrained scripts, and monolithic workflows become anti-patterns. The `deprecated` skill provides a structured framework for:
+1. **Cataloging & Identifying Anti-Patterns**: Spotting fragile practices before they introduce bugs or security flaws.
+2. **Lifecycle Governance**: Managing transitions through explicit lifecycle states (Active $\to$ Maintenance $\to$ Deprecated $\to$ Sunset).
+3. **Safe Migration Paths**: Step-by-step playbooks for upgrading legacy skills, rules, and scripts to modern composable standards.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Active: Production Verified
+    Active --> Maintenance: Superseded by Modern Composable Pattern
+    Maintenance --> Deprecated: Formal Deprecation Notice & Migration Path Published
+    Deprecated --> Sunset: Full Removal after Grace Period
+    Sunset --> [*]
+```
+
+---
+
+## 2. Catalog of Deprecated Anti-Patterns
+
+| Anti-Pattern | Description | Why It Failed | Modern Replacement |
+| :--- | :--- | :--- | :--- |
+| **"Vibe Coding"** | Prompting an agent without tests or formal specifications. | Introduces subtle regressions, hallucinations, and unmaintainable architectures. | **`engineering` (TDD + `to-spec`)**: Red-Green-Refactor with failing test first. |
+| **Monolithic God-Prompts** | 5,000-word single-shot prompts attempting to build entire apps at once. | Context saturation, loss of steering control, silent omissions. | **Modular Composable Skills**: Specialized skills invoked on-demand. |
+| **Shotgun Debugging** | Asking the agent to "fix this error" repeatedly without a reproduction harness. | Fixes symptom while breaking adjacent contracts; high token waste. | **`engineering` (Hypothesis-Driven Diagnosis)**: Minimal repro script (`hitl-loop`). |
+| **Silent Spec Drift** | Modifying requirements mid-implementation without updating docs. | Desynchronization between codebase, ADRs, and product intent. | **`productivity` (`grill-with-docs`)**: Update `CONTEXT.md` and ADRs first. |
+| **Unbounded Agent Loops** | Agent allowed to loop indefinitely fixing errors. | Infinite execution loops, runaway API costs, file corruption. | **`in-progress` (`loop-me`)**: Strict 5-iteration cap with invariant checks. |
+
+---
+
+## 3. Deprecation Protocol & Migration Playbook
+
+When retiring an existing tool, skill, or architectural pattern:
+
+### Step 1: Formal Deprecation Notice
+Add a clear deprecation banner to the top of the skill or document:
+```markdown
+> [!WARNING]
+> **DEPRECATED**: This pattern is deprecated as of September 2026 and will be sunset in Q1 2027.
+> **Replacement**: Use `skills/engineering/` with the TDD protocol.
+> **Migration Guide**: See `MIGRATION.md` for refactoring instructions.
+```
+
+### Step 2: Non-Breaking Adapter / Forwarding Shim
+When a user or tool invokes a deprecated command, execute a thin forwarding shim that:
+1. Emits a concise warning to the user.
+2. Forwards execution to the canonical replacement skill.
+
+### Step 3: Decommissioning Verification
+Before deleting deprecated files:
+- Verify zero inbound references across `.agents/`, `.claude/`, and `.cursor/`.
+- Run project test suites to confirm no broken dependencies.
+
+---
+
+## 4. Archival and Sunset Policy
+
+Artifacts reaching **Sunset** status are moved to an archive directory with their terminal commit sha and retirement rationale preserved for auditability.
+
+

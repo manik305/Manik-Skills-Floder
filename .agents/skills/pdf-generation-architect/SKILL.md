@@ -119,17 +119,17 @@ Alert Badges     : Emerald (#059669), Amber (#D97706), Rose (#E11D48)
 Font Families    : Inter, Outfit, Liberation Sans, or Roboto (fallback)
 ```
 
-### Document Anatomy Standard
+### Document Anatomy & Runtime Identity Standard
 
-#### 1. Page 1 Mandatory Author & Topic Hierarchy
-On the first page of every generated PDF document, follow this strict top-to-bottom layout:
-- **Author Identity Block (At the Top)**:
-  - **Author Name**: `Manik Prabhu`
-  - **Designation**: `Senior Marketing and Delivery Manager`
-  - **Company**: `Digio Click` (`DJOClick`)
-- **Topic Highlight Block (Directly Below Author Details)**:
-  - The document title and core target topic must be prominently highlighted immediately below the author credentials block.
-  - Accompanied by the Executive Metadata Card (Date, Classification, Verification Status).
+#### 1. Runtime Author & Document Identity Configuration Module
+Users can optionally specify their personal or corporate identity at prompt time when generating any document:
+- **Runtime Prompt Parameters**:
+  - `--author` or `Author: [Name]` (e.g., `Author: Manik Prabhu` or custom stakeholder)
+  - `--designation` or `Role: [Designation]` (e.g., `Role: Senior Marketing and Delivery Manager`)
+  - `--company` or `Organization: [Company]` (e.g., `Company: Digio Click`)
+- **Dynamic Header & Topic Placement**:
+  - **When Author Details are Provided**: Display the author block (Name, Designation, Company) at the top of the first page. The primary topic/title is prominently highlighted **directly below** these author details.
+  - **When Author Details are Omitted**: Focus the first page directly on the primary topic, executive summary card, and organizational metadata without hardcoding default names.
 
 #### 2. Running Header & Footer Zone
 - **Running Header**:
@@ -137,7 +137,7 @@ On the first page of every generated PDF document, follow this strict top-to-bot
   - Right: Confidentiality status
   - Thin rule divider ($0.5\text{pt}$ in `#E2E8F0`)
 - **Running Footer (All Pages)**:
-  - Left: `Manik Prabhu | Digio Click` (Do not repeat full designation on every page; keep it clean and focused)
+  - Left: `[Author Name] | [Company]` (if provided at runtime) or Document Classification
   - Right: Dynamic page numbering: `Page X of Y`
   - Thin rule divider ($0.5\text{pt}$ in `#E2E8F0`)
 
@@ -150,14 +150,6 @@ On the first page of every generated PDF document, follow this strict top-to-bot
 - Left border accent ($3\text{pt}$ solid primary/secondary color).
 - Light background with rounded corners ($4\text{px}$).
 
----
-
-### Universal Video Generation Rule
-Whenever an agentic workflow, video pipeline, or presentation framework generates a video:
-- Embed a permanent, discreet footer at the bottom of the video frame:
-  **Manik Prabhu**
-
----
 
 ## 6. Phase 5: Editable Source Formats & Compilation
 
@@ -176,7 +168,7 @@ Typst produces lightweight, editable markup that compiles in $<0.2$ seconds to p
   ]),
   footer: locate(loc => [
     #line(length: 100%, stroke: 0.5pt + rgb("#E2E8F0"))
-    #text(9pt, fill: rgb("#64748B"))[Manik Prabhu | Digio Click]
+    #text(9pt, fill: rgb("#64748B"))[Archived Record]
     #h(1fr)
     #text(9pt, fill: rgb("#64748B"))[Page #loc.page() of #counter(page).final(loc).at(0)]
   ])
@@ -221,9 +213,9 @@ Editable HTML document with strict `@page` CSS print rules.
       color: #64748b;
     }
     @bottom-left {
-      content: "Manik Prabhu | Digio Click";
+      content: "Generated via PDF Architect";
       font-size: 8pt;
-      color: #64748b;
+      color: #94a3b8;
     }
     @bottom-right {
       content: "Page " counter(page) " of " counter(pages);
@@ -265,7 +257,7 @@ Editable HTML document with strict `@page` CSS print rules.
 ## 7. Operational Checklist Before Finalizing Delivery
 
 Before presenting the result to the user, ensure:
-- [ ] First page presents **Manik Prabhu** (`Senior Marketing and Delivery Manager | Digio Click`) positioned cleanly above the highlighted topic.
+- [ ] If author credentials provided at runtime, first page presents author details cleanly positioned above the highlighted topic.
 - [ ] Topic thoroughly addressed, including all sub-topics.
 - [ ] Grounded research completed with domain-specific verified metrics (no generic placeholders).
 - [ ] Strict page budget respected with no trailing orphan lines.

@@ -1,0 +1,104 @@
+---
+name: in-progress
+description: Experimental agentic workflows, autonomous execution loops, cross-agent state transfer, self-healing feedback cycles, and architectural modularity enforcement. Incubation ground for emergent AI coding patterns. Compatible with Antigravity, Claude Code, and Cursor.
+---
+
+# Emergent AI Workflows & Experimental Agent Patterns (`in-progress`)
+
+---
+
+## 1. Scope & Incubation Philosophy
+
+The `in-progress` skill suite contains cutting-edge, experimental workflows for autonomous AI development. These patterns represent the frontier of agent capability, bridging raw LLM completions with autonomous loops, modular boundary enforcement, and cross-platform continuity.
+
+```mermaid
+graph TD
+    A[Formal Specification / Design] --> B[implement-spec: Autonomous Spec Engine]
+    B --> C[loop-me: Self-Healing Test/Fix Cycle]
+    C --> D{Suite Passing?}
+    D -- No (Under Max Iterations) --> C
+    D -- Yes --> E[retro: Post-Mortem & Agent Audit]
+    E --> F[setup-ts-deep-modules: Architectural Linting]
+    F --> G[Cross-Agent Bridge: claude-handoff]
+```
+
+---
+
+## 2. Autonomous Spec Implementation Engine (`implement-spec`)
+
+Automates the translation of formal specifications (`docs/specs/*.md`) directly into tested, production-ready code.
+
+### Execution Cycle
+1. **Spec Ingestion**: Read target specification, extract all numbered requirements and constraints.
+2. **Verification Harness**: Generate failing tests corresponding to each spec requirement before touching application code.
+3. **Layer-by-Layer Build**:
+   - Step 1: Types and Interfaces.
+   - Step 2: Pure Domain Logic (Business rules, data transforms).
+   - Step 3: Infrastructure Adapters (Database repos, network clients).
+   - Step 4: Presentation / Controller Endpoints.
+4. **Validation Gate**: Run test suite; assert 100% compliance with spec criteria.
+
+---
+
+## 3. Autonomous Feedback & Self-Healing Loops (`loop-me`)
+
+Enables agents to independently execute iterative test-and-repair cycles without human intervention between attempts.
+
+### Safety Guardrails & Limits
+To prevent runaway token consumption or hallucination death spirals:
+- **Maximum Loop Cap**: Fixed limit of 5 iterations per defect cycle.
+- **Diff Invariant Check**: If code changes revert previously passing tests, immediately roll back.
+- **Loop Breaker**: If the exact same error string occurs across 2 consecutive cycles, abort and escalate to human review.
+
+### Loop State Machine
+```
+[RUN COMMAND] ──(Exit != 0)──> [PARSE STACK TRACE]
+     ▲                                │
+     │                           (Isolate Cause)
+     │                                ▼
+[RE-RUN VERIFICATION] <── [APPLY MINIMAL DIFF]
+```
+
+---
+
+## 4. Agent Retrospective & Friction Analysis (`retro`)
+
+After completing complex engineering tasks, run an automated post-mortem to analyze friction and improve future interactions:
+
+### Retrospective Report Template
+```markdown
+# Agent Task Retrospective
+
+## 1. Friction Points
+- **Unclear Boundary**: Ambiguity in data schema required 3 round-trips.
+- **Test Invalidation**: Mock server lacked fixture for expired token error.
+
+## 2. Token & Tool Efficiency
+- **Total Tool Invocations**: 18
+- **Redundant Reads**: 2 (addressed by improving memory caching)
+
+## 3. Actionable Rule Adjustments
+- Add explicit glob pattern to project configuration rules to prevent searching `node_modules` or `dist/`.
+```
+
+---
+
+## 5. TypeScript Deep Module Enforcement (`setup-ts-deep-modules`)
+
+Uses `dependency-cruiser` and compiler options to structurally prohibit architectural anti-patterns in TypeScript codebases:
+
+### Architectural Invariants Enforced
+- **No Circular Dependencies**: Prohibit `A -> B -> A` import cycles.
+- **Deep Module Boundaries**: External callers may only import from `module/index.ts` (public API). Internal files (`module/internal/*`) are private.
+- **Layering Rules**: Domain logic may never import from UI or infrastructure layers.
+
+---
+
+## 6. Long-Form Technical Synthesis (`writing-beats`)
+
+When authoring extensive architectural proposals, whitepapers, or system documentation, avoid generating massive monolithic markdown files in a single pass. Instead, partition the narrative into:
+1. **Beats**: High-level outline of key milestones.
+2. **Fragments**: Concise, self-contained sections authored and validated independently.
+3. **Shape**: Final editing pass aligning tone, transitions, and cross-references.
+
+
